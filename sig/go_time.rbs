@@ -1,0 +1,24 @@
+# formats Time like Golang
+module GoTime
+  # Formats time according to Go-like format string
+  #
+  # @param [Time] time
+  # @param [String] fmt Go-like format string
+  # @return [String] formatted string
+  def self.format: (Time time, String fmt) -> String
+
+  # Formats time according to Go-like format or strftime format string
+  #
+  # @param [Time] time
+  # @param [String] fmt Go-like format or strftime format string
+  # @return [String] formatted string
+  def self.strftime: (Time time, String fmt) -> String
+
+  # Converts Go-like format string to strftime format string
+  #
+  # @param [String] fmt Go-like format string
+  # @return [String] strftime format string
+  def self.convert: (String fmt) -> String
+
+  def self.update_convert_regexp: () -> void
+end
