@@ -68,7 +68,7 @@ class GoTimeTest < Minitest::Test
   end
 
   def test_example_timeformat
-    # 2012/03/04 05:06:07.080000+09:00
+    # 2012/03/04 17:06:07.080000+09:00
     time = Time.at(1330848367, 80000, in: "+09:00")
 
     #            "01/02 03:04:05PM '06 -0700"
