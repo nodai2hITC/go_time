@@ -64,4 +64,6 @@ module GoTime
   def self.update_convert_regexp
     @convert_regexp = Regexp.union(@convert_table.keys)
   end
+
+  private_class_method :update_convert_regexp
 end

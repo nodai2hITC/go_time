@@ -2,23 +2,22 @@
 module GoTime
   # Formats time according to Go-like format string
   #
-  # @param [Time] time
-  # @param [String] fmt Go-like format string
+  # @param time [Time]
+  # @param fmt [String] Go-like format string
   # @return [String] formatted string
   def self.format: (Time time, String fmt) -> String
 
   # Formats time according to Go-like format or strftime format string
   #
-  # @param [Time] time
-  # @param [String] fmt Go-like format or strftime format string
+  # @param time [Time]
+  # @param fmt [String] Go-like format or strftime format string
   # @return [String] formatted string
   def self.strftime: (Time time, String fmt) -> String
 
   # Converts Go-like format string to strftime format string
   #
-  # @param [String] fmt Go-like format string
+  # @param fmt [String] Go-like format string
+  # @param exception [Boolean] If true, raise ArgumentError when there is a syntax that does not support Time#strftime.
   # @return [String] strftime format string
-  def self.convert: (String fmt) -> String
-
-  def self.update_convert_regexp: () -> void
+  def self.convert: (String fmt, ?exception: bool) -> String
 end
