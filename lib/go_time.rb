@@ -9,8 +9,8 @@ require_relative "go_time/version"
 module GoTime
   # Formats time according to Go-like format string
   #
-  # @param [Time] time
-  # @param [String] fmt Go-like format string
+  # @param time [Time]
+  # @param fmt [String] Go-like format string
   # @return [String] formatted string
   def self.format(time, fmt)
     update_convert_regexp unless @convert_regexp
@@ -28,8 +28,8 @@ module GoTime
 
   # Formats time according to Go-like format or strftime format string
   #
-  # @param [Time] time
-  # @param [String] fmt Go-like format or strftime format string
+  # @param time [Time]
+  # @param fmt [String] Go-like format or strftime format string
   # @return [String] formatted string
   def self.strftime(time, fmt)
     update_convert_regexp unless @convert_regexp
@@ -49,10 +49,16 @@ module GoTime
 
   # Converts Go-like format string to strftime format string
   #
-  # @param [String] fmt Go-like format string
+  # @param fmt [String] Go-like format string
+  # @param exception [Boolean] If true, raise ArgumentError when there is a syntax that does not support Time#strftime.
   # @return [String] strftime format string
-  def self.convert(fmt)
-    fmt.gsub(BASIC_CONVERT_REGEXP, BASIC_CONVERT_TABLE)
+  def self.convert(fmt, exception: false)
+    ret = fmt.gsub(BASIC_CONVERT_REGEXP, BASIC_CONVERT_TABLE)
+    if exception
+      update_convert_regexp unless @convert_regexp
+      raise ArgumentError, "unsupported syntax" if ret.match?(@convert_regexp)
+    end
+    ret
   end
 
   def self.update_convert_regexp

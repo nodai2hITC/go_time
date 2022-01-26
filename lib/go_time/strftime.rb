@@ -3,7 +3,7 @@
 require "go_time"
 
 class Time
-  alias_method :_orig_strftime, :strftime
+  alias _orig_strftime strftime
 
   def strftime(fmt)
     GoTime.strftime(self, fmt)
