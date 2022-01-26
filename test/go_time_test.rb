@@ -70,7 +70,7 @@ class GoTimeTest < Minitest::Test
   def test_example_timeformat
     # 2012/03/04 05:06:07.080000+09:00
     time = Time.at(1330848367, 80000, in: "+09:00")
-    
+
     #            "01/02 03:04:05PM '06 -0700"
     assert_equal "03/04 05:06:07PM '12 +0900", GoTime.format(time, GoTime::Layout)
     #            "Mon Jan _2 15:04:05 2006"
