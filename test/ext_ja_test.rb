@@ -9,8 +9,8 @@ class GoTimeTest < Minitest::Test
     # 1912/03/04 17:06:07.080000+09:00
     time1 = Time.at(-1824911633, 80000, in: "+09:00")
 
-    assert_equal         "明治四十五年（一九一二年）三月四日(月) 午後五時六分七秒",
-      GoTime.format(time1, "平成十八年（二〇〇六年）一月二日(火) 午後三時四分五秒")
+    assert_equal         "明治四十五年（一九一二年）三月四日(月) 十七時六分七秒",
+      GoTime.format(time1, "平成十八年（二〇〇六年）一月二日(火) 十五時四分五秒")
     assert_equal           "１９１２年（㍾４５年）３月４日(月) PM５時６分７秒",
       GoTime.format(time1, "２００６年（㍻１８年）１月２日(火) PM３時４分５秒")
     assert_equal           "Ｍ４５ ０３/０４ ０５：０６：０７",
