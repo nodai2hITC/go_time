@@ -56,7 +56,8 @@ module GoTime
     ret = fmt.gsub(BASIC_CONVERT_REGEXP, BASIC_CONVERT_TABLE)
     if exception
       update_convert_regexp unless @convert_regexp
-      raise ArgumentError, "unsupported syntax" if ret.match?(@convert_regexp)
+      matched = ret.match(@convert_regexp)
+      raise ArgumentError, %(unsupported syntax "#{matched}") if matched
     end
     ret
   end
