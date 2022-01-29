@@ -46,7 +46,18 @@ time.strftime("Mon Jan _2 15:04:05 2006")
 #          => "Sun Mar  4 17:06:07 2012"
 ```
 
-For more information, please refer to the [Golang source code](https://golang.org/src/time/format.go).
+For more information about format, please refer to the [Golang source code](https://golang.org/src/time/format.go).
+
+## Extensions
+
+GoTime has extensions that support date and time representations in various languages.
+
+```ruby
+require "go_time/ext/ja" # Japanese
+time = Time.utc(2019, 5, 6, 7, 8, 9)
+time.strftime("平成十八年（二〇〇六年）一月二日(火) 午後三時四分五秒")
+#            => "令和元年（二〇一九年）五月六日(月) 午前七時八分九秒"
+```
 
 ## Development
 
