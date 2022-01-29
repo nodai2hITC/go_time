@@ -13,8 +13,6 @@ module GoTime
   # @param fmt [String] Go-like format string
   # @return [String] formatted string
   def self.format(time, fmt)
-    update_convert_regexp unless @convert_regexp
-
     fmt.gsub(@convert_regexp) do |matched|
       conv = @convert_table[matched]
       case conv
@@ -32,8 +30,6 @@ module GoTime
   # @param fmt [String] Go-like format or strftime format string
   # @return [String] formatted string
   def self.strftime(time, fmt)
-    update_convert_regexp unless @convert_regexp
-
     converted_fmt = fmt.gsub(@convert_regexp) do |matched|
       conv = @convert_table[matched]
       case conv
@@ -55,7 +51,6 @@ module GoTime
   def self.convert(fmt, exception: false)
     ret = fmt.gsub(BASIC_CONVERT_REGEXP, BASIC_CONVERT_TABLE)
     if exception
-      update_convert_regexp unless @convert_regexp
       matched = ret.match(@convert_regexp)
       raise ArgumentError, %(unsupported syntax "#{matched}") if matched
     end
@@ -67,4 +62,5 @@ module GoTime
   end
 
   private_class_method :update_convert_regexp
+  update_convert_regexp
 end

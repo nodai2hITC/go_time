@@ -125,5 +125,6 @@ module GoTime
   @convert_table["五"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.sec) }
   @convert_table["０５"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.sec)}"[-2, 2] }
   @convert_table["５"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.sec) }
-  @convert_regexp = nil
+
+  update_convert_regexp
 end
