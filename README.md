@@ -1,6 +1,6 @@
 # GoTime - formats Time like Golang
 
-Do you remember the format of strftime? Wouldn't you like to use a concrete and understandable format like "01/02 03:04:05PM '06 -0700" like in the Golang?
+Do you remember the format of strftime? Wouldn't you like to use a concrete and understandable format for example "01/02 03:04:05PM '06 -0700" like in the Golang?
 
 ## Installation
 
