@@ -77,5 +77,4 @@ module GoTime
   @convert_table[",999"]       = @convert_table[".999999999"]
   @convert_table[",99"]        = @convert_table[".999999999"]
   @convert_table[",9"]         = @convert_table[".999999999"]
-  @convert_regexp = nil
 end
