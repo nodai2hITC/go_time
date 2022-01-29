@@ -31,11 +31,11 @@ module GoTime
     ].freeze
 
     ERA_REPRESENTATIONS = {
-      "令和" => { "平成" => "令和", "㍻" => "㋿", "Ｈ" => "Ｒ", "H" => "R" },
-      "平成" => { "平成" => "平成", "㍻" => "㍻", "Ｈ" => "Ｈ", "H" => "H" },
-      "昭和" => { "平成" => "昭和", "㍻" => "㍼", "Ｈ" => "Ｓ", "H" => "S" },
-      "大正" => { "平成" => "大正", "㍻" => "㍽", "Ｈ" => "Ｔ", "H" => "T" },
-      "明治" => { "平成" => "明治", "㍻" => "㍾", "Ｈ" => "Ｍ", "H" => "M" }
+      "令和" => { "平成" => "令和", "㍻" => "㋿", "Ｈ" => "Ｒ", "H" => "R" }.freeze,
+      "平成" => { "平成" => "平成", "㍻" => "㍻", "Ｈ" => "Ｈ", "H" => "H" }.freeze,
+      "昭和" => { "平成" => "昭和", "㍻" => "㍼", "Ｈ" => "Ｓ", "H" => "S" }.freeze,
+      "大正" => { "平成" => "大正", "㍻" => "㍽", "Ｈ" => "Ｔ", "H" => "T" }.freeze,
+      "明治" => { "平成" => "明治", "㍻" => "㍾", "Ｈ" => "Ｍ", "H" => "M" }.freeze
     }.freeze
 
     def self.japanese_year(time)
@@ -68,9 +68,9 @@ module GoTime
     era, _year = GoTime::Ja.japanese_year(t)
     GoTime::Ja::ERA_REPRESENTATIONS[era][s]
   }
-  @convert_table["Ｈ１８"] = lambda { |t, _s|
+  @convert_table["Ｈ１８"] = @convert_table["H１８"] = lambda { |t, s|
     era, year = GoTime::Ja.japanese_year(t)
-    "#{GoTime::Ja::ERA_REPRESENTATIONS[era]['Ｈ']}#{GoTime::Ja::FULLWIDTH_NUMBERS[year]}"
+    "#{GoTime::Ja::ERA_REPRESENTATIONS[era][s[0]]}#{GoTime::Ja::FULLWIDTH_NUMBERS[year]}"
   }
   @convert_table["H18"] = lambda { |t, _s|
     era, year = GoTime::Ja.japanese_year(t)
