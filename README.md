@@ -48,6 +48,20 @@ time.strftime("Mon Jan _2 15:04:05 2006")
 
 For more information about format, please refer to the [Golang source code](https://golang.org/src/time/format.go).
 
+## gotime command
+
+You can use `gotime` command to convert a golang format string to a strftime format string.
+
+    $ gotime 2006/01/02 15:04:05
+    %Y/%m/%d %H:%M:%S
+
+    $ gotime
+    > 2006/01/02
+    => %Y/%m/%d
+    > 2006/01/02 Z0700
+    unsupported syntax "Z0700"
+    > exit
+
 ## Extensions
 
 GoTime has extensions that support date and time representations in various languages.
