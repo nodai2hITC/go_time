@@ -65,66 +65,66 @@ module GoTime
     t.year.to_s[-2, 2].tr("0123456789", "０１２３４５６７８９")
   }
   @convert_table["平成"] = @convert_table["㍻"] = lambda { |t, s|
-    era, _year = GoTime::Ja.japanese_year(t)
-    GoTime::Ja::ERA_REPRESENTATIONS[era][s]
+    era, _year = Ja.japanese_year(t)
+    Ja::ERA_REPRESENTATIONS[era][s]
   }
   @convert_table["Ｈ１８"] = @convert_table["H１８"] = lambda { |t, s|
-    era, year = GoTime::Ja.japanese_year(t)
-    "#{GoTime::Ja::ERA_REPRESENTATIONS[era][s[0]]}#{GoTime::Ja::FULLWIDTH_NUMBERS[year]}"
+    era, year = Ja.japanese_year(t)
+    "#{Ja::ERA_REPRESENTATIONS[era][s[0]]}#{Ja::FULLWIDTH_NUMBERS[year]}"
   }
   @convert_table["H18"] = lambda { |t, _s|
-    era, year = GoTime::Ja.japanese_year(t)
-    "#{GoTime::Ja::ERA_REPRESENTATIONS[era]['H']}#{sprintf('%02d', year)}"
+    era, year = Ja.japanese_year(t)
+    "#{Ja::ERA_REPRESENTATIONS[era]['H']}#{sprintf('%02d', year)}"
   }
   @convert_table["十八年"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
-    "#{year == 1 ? '元' : GoTime::Ja::CHINESE_NUMERALS.at(year)}年"
+    _era, year = Ja.japanese_year(t)
+    "#{year == 1 ? '元' : Ja::CHINESE_NUMERALS.at(year)}年"
   }
   @convert_table["１８年"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
-    "#{year == 1 ? '元' : GoTime::Ja::FULLWIDTH_NUMBERS.at(year)}年"
+    _era, year = Ja.japanese_year(t)
+    "#{year == 1 ? '元' : Ja::FULLWIDTH_NUMBERS.at(year)}年"
   }
   @convert_table["18年"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
+    _era, year = Ja.japanese_year(t)
     "#{year == 1 ? '元' : sprintf('%02d', year)}年"
   }
   @convert_table["十八"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
-    GoTime::Ja::CHINESE_NUMERALS.at(year)
+    _era, year = Ja.japanese_year(t)
+    Ja::CHINESE_NUMERALS.at(year)
   }
   @convert_table["１８"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
-    GoTime::Ja::FULLWIDTH_NUMBERS.at(year)
+    _era, year = Ja.japanese_year(t)
+    Ja::FULLWIDTH_NUMBERS.at(year)
   }
   @convert_table["18"] = lambda { |t, _s|
-    _era, year = GoTime::Ja.japanese_year(t)
+    _era, year = Ja.japanese_year(t)
     sprintf("%02d", year)
   }
-  @convert_table["十五"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.hour) }
-  @convert_table["１５"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.hour)}"[-2, 2] }
-  @convert_table["一"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.month) }
-  @convert_table["０１"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.month)}"[-2, 2] }
-  @convert_table["１"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.month) }
+  @convert_table["十五"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.hour) }
+  @convert_table["１５"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.hour)}"[-2, 2] }
+  @convert_table["一"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.month) }
+  @convert_table["０１"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.month)}"[-2, 2] }
+  @convert_table["１"] = ->(t, _s) { Ja::FULLWIDTH_NUMBERS.at(t.month) }
   @convert_table["睦月"] = lambda { |t, _s|
     %w[睦月 如月 弥生 卯月 皐月 水無月 文月 葉月 長月 神無月 霜月 師走].at(t.month - 1)
   }
-  @convert_table["二"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.mday) }
-  @convert_table["０２"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.mday)}"[-2, 2] }
-  @convert_table["＿２"] = ->(t, _s) { "　#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.mday)}"[-2, 2] }
-  @convert_table["２"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.mday) }
+  @convert_table["二"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.mday) }
+  @convert_table["０２"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.mday)}"[-2, 2] }
+  @convert_table["＿２"] = ->(t, _s) { "　#{Ja::FULLWIDTH_NUMBERS.at(t.mday)}"[-2, 2] }
+  @convert_table["２"] = ->(t, _s) { Ja::FULLWIDTH_NUMBERS.at(t.mday) }
   @convert_table["火"] = ->(t, _s) { %w[日 月 火 水 木 金 土].at(t.wday) }
   @convert_table["午後"] = ->(t, _s) { t.hour < 12 ? "午前" : "午後" }
   @convert_table["ＰＭ"] = ->(t, _s) { t.hour < 12 ? "ＡＭ" : "ＰＭ" }
   @convert_table["ｐｍ"] = ->(t, _s) { t.hour < 12 ? "ａｍ" : "ｐｍ" }
-  @convert_table["三"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.hour % 12) }
-  @convert_table["０３"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.hour % 12)}"[-2, 2] }
-  @convert_table["３"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.hour % 12) }
-  @convert_table["四"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.min) }
-  @convert_table["０４"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.min)}"[-2, 2] }
-  @convert_table["４"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.min) }
-  @convert_table["五"] = ->(t, _s) { GoTime::Ja::CHINESE_NUMERALS.at(t.sec) }
-  @convert_table["０５"] = ->(t, _s) { "０#{GoTime::Ja::FULLWIDTH_NUMBERS.at(t.sec)}"[-2, 2] }
-  @convert_table["５"] = ->(t, _s) { GoTime::Ja::FULLWIDTH_NUMBERS.at(t.sec) }
+  @convert_table["三"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.hour % 12) }
+  @convert_table["０３"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.hour % 12)}"[-2, 2] }
+  @convert_table["３"] = ->(t, _s) { Ja::FULLWIDTH_NUMBERS.at(t.hour % 12) }
+  @convert_table["四"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.min) }
+  @convert_table["０４"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.min)}"[-2, 2] }
+  @convert_table["４"] = ->(t, _s) { Ja::FULLWIDTH_NUMBERS.at(t.min) }
+  @convert_table["五"] = ->(t, _s) { Ja::CHINESE_NUMERALS.at(t.sec) }
+  @convert_table["０５"] = ->(t, _s) { "０#{Ja::FULLWIDTH_NUMBERS.at(t.sec)}"[-2, 2] }
+  @convert_table["５"] = ->(t, _s) { Ja::FULLWIDTH_NUMBERS.at(t.sec) }
 
   update_convert_regexp
 end
