@@ -39,6 +39,7 @@ module GoTime
     }.freeze
 
     def self.japanese_year(time)
+      time = time.to_time if time.respond_to?(:to_time)
       if time >= Time.new(2019, 4, 30)
         ["令和", time.year - 2018]
       elsif time >= Time.new(1989, 1, 8)

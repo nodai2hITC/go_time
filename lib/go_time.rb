@@ -51,7 +51,7 @@ module GoTime
   def self.convert(fmt, exception: false)
     ret = fmt.gsub(BASIC_CONVERT_REGEXP, BASIC_CONVERT_TABLE)
     if exception
-      matched = ret.match(@convert_regexp)
+      matched = ret.match(Regexp.union(@convert_table.keys - BASIC_CONVERT_TABLE.keys))
       raise ArgumentError, %(unsupported syntax "#{matched}") if matched
     end
     ret
