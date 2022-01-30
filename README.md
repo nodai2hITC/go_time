@@ -46,7 +46,7 @@ time.strftime("Mon Jan _2 15:04:05 2006")
 #          => "Sun Mar  4 17:06:07 2012"
 ```
 
-For more information about format, please refer to the [Golang source code](https://golang.org/src/time/format.go).
+For more information, please refer to [go_time.rbs](https://github.com/nodai2hITC/go_time/blob/main/sig/go_time.rbs) and [Golang source code](https://golang.org/src/time/format.go).
 
 ## gotime command
 
